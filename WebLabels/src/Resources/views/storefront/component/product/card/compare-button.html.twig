@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/component/product/card/compare-button.html.twig' %}
+
+{% block frosh_product_compare_add_to_compare_button %}
+  {% if showIconOnly %}
+    <button data-add-to-compare-button="true" data-add-to-compare-button-options="{{ addToCompareOptions|json_encode }}" class="btn btn-block btn-compare" title="{{ 'froshProductCompare.general.addToCompare'|trans|striptags }}">{% sw_icon 'arrow-switch' style { size: 'sm', color: 'primary' } %}</button>
+  {% else %}
+    <button data-add-to-compare-button="true" data-add-to-compare-button-options="{{ addToCompareOptions|json_encode }}" class="btn btn-block btn-compare" title="{{ 'froshProductCompare.general.addToCompare'|trans|striptags }}">{{ 'froshProductCompare.general.addToCompare'|trans|sw_sanitize }}</button>
+  {% endif %}
+{% endblock %}

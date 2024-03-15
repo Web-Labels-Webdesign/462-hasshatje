@@ -1,0 +1,112 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_navigation_columns %}
+  {{ parent() }}
+  <div class="col-md-4 footer-column js-footer-column">
+    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger" data-target="#collapseFooterTitle" aria-expanded="true" aria-controls="collapseFooter">
+      {{ 'footer.newsletterHeadline'|trans }}
+      <div class="footer-column-toggle">
+        <span class="footer-plus-icon">{% sw_icon 'plus' %}</span>
+        <span class="footer-minus-icon">{% sw_icon 'minus' %}</span>
+      </div>
+    </div>
+    <div id="collapseFooter" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterTitle">
+      <div class="footer-column-content-inner">
+        <p>{{ 'wlcustom.footer.newsletter.text'|trans }}</p>
+        <a class="btn btn-primary" data-toggle="modal" data-bs-toggle="modal" data-url="/widgets/cms/1fb11119763641779050e8ddfd846fd0" href="/widgets/cms/1fb11119763641779050e8ddfd846fd0" title="Newsletter">{{ 'newsletter.subscribeOption'|trans }}</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block layout_footer_copyright %}
+
+{% endblock %}
+
+{% block layout_footer_payment_shipping_logos %}
+
+{% endblock %}
+
+{% block layout_footer_navigation %}
+  {{ parent() }}
+  <div class="footer-additionals row" data-collapse-footer="true">
+    {# Zahlungsarten #}
+    <div class="col-md-3 footer-column js-footer-column">
+      <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger" data-target="#collapseFooterTitle0" aria-expanded="true" aria-controls="collapseFooter0">
+        {{ 'account.paymentTitle'|trans }}
+        <div class="footer-column-toggle">
+          <span class="footer-plus-icon">{% sw_icon 'plus' %}</span>
+          <span class="footer-minus-icon">{% sw_icon 'minus' %}</span>
+        </div>
+      </div>
+      <div id="collapseFooter0" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterTitle0">
+        <div class="footer-column-content-inner payment-shipping">
+          {% set paymentArray = [] %}
+          {% set paymentArrayName = [] %}
+          {% for paymentMethod in page.salesChannelPaymentMethods %}
+            {% if paymentMethod.media %}
+              {% if not (paymentMethod.media.id in paymentArray) %}
+                {% set paymentArray = paymentArray|merge([paymentMethod.media.id]) %}
+                {% sw_thumbnails 'footer-payment-image-thumbnails' with { media: paymentMethod.media, sizes: { default: '100px' }, attributes: { class: 'img-fluid footer-logo-image', alt: paymentMethod.media.translated.alt ? : paymentMethod.translated.name, title: paymentMethod.media.translated.title ? : paymentMethod.translated.name } } %}
+              {% endif %}
+            {% else %}
+              {% if paymentMethod.name not in paymentArrayName %}
+                {% set paymentArrayName = paymentArrayName|merge([paymentMethod.name]) %}
+                <span title="{{ paymentMethod.name }}">{{ paymentMethod.name }}</span>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {# Versandarten #}
+    <div class="col-md-3 footer-column js-footer-column">
+      <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger" data-target="#collapseFooterTitle1" aria-expanded="true" aria-controls="collapseFooter1">
+        {{ 'wlcustom.versandarten'|trans }}
+        <div class="footer-column-toggle">
+          <span class="footer-plus-icon">{% sw_icon 'plus' %}</span>
+          <span class="footer-minus-icon">{% sw_icon 'minus' %}</span>
+        </div>
+      </div>
+      <div id="collapseFooter1" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterTitle1">
+        <div class="footer-column-content-inner payment-shipping">
+          <img src="/media/c4/c6/df/1689083603/Gruppe%20-49.png">
+          <img src="/media/fc/bf/75/1692858807/dpd.jpg">
+        </div>
+      </div>
+    </div>
+
+    {# Trusteds #}
+    <div class="col-md-3 footer-column js-footer-column">
+      <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger" data-target="#collapseFooterTitle2" aria-expanded="true" aria-controls="collapseFooter2">
+        {{ 'wlcustom.trusteds'|trans }}
+        <div class="footer-column-toggle">
+          <span class="footer-plus-icon">{% sw_icon 'plus' %}</span>
+          <span class="footer-minus-icon">{% sw_icon 'minus' %}</span>
+        </div>
+      </div>
+      <div id="collapseFooter2" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterTitle2">
+        <div class="footer-column-content-inner trusteds">
+          <img src="/media/4b/53/ef/1689082428/Gruppe -28.png" />
+          <img src="/media/bb/fe/98/1689082428/Gruppe -27.png" />
+        </div>
+      </div>
+    </div>
+
+    {# Footer Logo #}
+    <div class="col-md-3 footer-column js-footer-column footer-contactform">
+      <div class="footer-image">
+        <img src="{{ theme_config('sw-logo-desktop')|sw_encode_url }}" alt="{{ 'header.logoLink'|trans|striptags }}" class="img-fluid header-logo-main-img" />
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block layout_footer_navigation_hotline_content %}
+  <div id="collapseFooterHotline" class="footer-column-content collapse js-footer-column-content footer-contact" aria-labelledby="collapseFooterHotlineTitle">
+    <div class="footer-column-content-inner">
+      <p class="footer-contact-hotline">{{ 'footer.serviceHotline'|trans|sw_sanitize }}</p>
+    </div>
+  </div>
+{% endblock %}

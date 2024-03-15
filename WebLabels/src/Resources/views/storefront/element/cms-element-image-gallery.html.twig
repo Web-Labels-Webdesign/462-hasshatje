@@ -1,0 +1,35 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-image-gallery.html.twig' %}
+
+{% block element_image_gallery_inner_wrapper %}
+  {{ parent() }}
+  <div class="product-badges">
+            {% set price = product.calculatedPrice %}
+            {% if page.product.calculatedPrices.count > 0 %}
+                {% set price = page.product.calculatedPrices.last %}
+            {% endif %}
+
+            {% set listPrice = price.listPrice.percentage > 0 %}
+            {% set hasRange = page.product.calculatedPrices.count > 1 %}
+
+            {% set displayParent = page.product.variantListingConfig.displayParent and page.product.parentId === null %}
+            {% if displayParent %}
+                {% set displayFromVariants = displayParent and price.unitPrice !== page.product.calculatedCheapestPrice.unitPrice %}
+            {% endif %}
+
+            {% if listPrice and not hasRange and not displayFromVariants %}
+                <div class="badge badge-danger badge-discount">
+                    Sale
+                </div>
+            {% endif %}
+            {% if page.product.markAsTopseller %}
+                <div>
+                    <span class="badge badge-warning badge-topseller">{{ "listing.boxLabelTopseller"|trans|sw_sanitize }}</span>
+                </div>
+            {% endif %}
+            {% if page.product.isNew %}
+                <div>
+                    <span class="badge badge-success badge-new">{{ "listing.boxLabelNew"|trans|sw_sanitize }}</span>
+                </div>
+            {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block page_product_detail_media %}
+  <div class="col-lg-4 product-detail-media">
+    {% if page.product.media %}
+      {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
+        mediaItems: mediaItems,
+        zoom: true,
+        zoomModal: true,
+        displayMode: 'contain',
+        gutter: 2,
+        minHeight: '430px',
+        navigationArrows: 'inside',
+        navigationDots: 'inside',
+        galleryPosition: 'underneath',
+        isProduct: true,
+        fallbackImageTitle: page.product.translated.name,
+        startIndexThumbnails: 1,
+        startIndexSlider: 1,
+        keepAspectRatioOnZoom: false
+      } %}
+    {% endif %}
+  </div> 
+{% endblock %}
+
+{% block page_product_detail_buy %}
+  {% set propertyGroupList = [] %}
+  {% set groupName = '' %}
+  {% set propertyName = '' %}
+  {% set propertyGroupCustomFieldList = [] %}
+  {% set propList = [] %}
+
+  <div class="col-lg-8 detail-custom-row">
+    <div class="row">
+      <div class="col-md-6 col-lg-7 cstm-properties">
+        <div class="product-detail-name-container">
+          <h1 class="product-detail-name" itemprop="name">{{ page.product.translated.name }}</h1>
+        </div>
+
+        {% if page.product.productNumber %}
+          <div class="product-detail-ordernumber-container">
+            <span class="product-detail-ordernumber-label">
+              {{ "detail.productNumberLabel"|trans|sw_sanitize }}
+            </span>
+            <meta itemprop="productID" content="{{ page.product.id }}" />
+            <span class="product-detail-ordernumber" itemprop="sku">
+              {{ page.product.productNumber }}
+            </span>
+          </div>
+        {% endif %}
+
+        {% if page.product.manufacturer %}
+          <div class="product-detail-manufacturer">
+            <span class="h5">{{ 'listing.filterManufacturerDisplayName'|trans }}</span>
+            <span>
+              {% if page.product.manufacturer.media %}
+                <img src="{{ page.product.manufacturer.media|sw_encode_media_url }}" class="product-detail-manufacturer-logo" alt="{{ page.product.manufacturer.translated.name }}" />
+              {% else %}
+                {{ page.product.manufacturer.translated.name }}
+              {% endif %}
+            </span>
+          </div>
+        {% endif %}
+
+        {% set displayProps = false %}
+        {% for group in page.product.sortedProperties %}
+          {% if group.customFields.custom_property_additionals_checkbox %}
+            {% set displayProps = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if displayProps %}
+          <div class="product-detail-properties">
+            <div class="product-detail-properties-container">
+              <div class="box-properties">
+                <p class="h5">{{ 'wlcustom.eigenschaften'|trans }}</p>
+                {% for group in page.product.sortedProperties %}
+                  {% set groupName = property.group.name %}
+                  {% set propertyName = property.name %}
+                  {% if group.customFields.custom_property_additionals_checkbox %}
+                    {% set propertyGroupList = propertyGroupList|merge({ (groupName): [] }) %}
+                    {% set propertyGroupCustomFieldList = propertyGroupCustomFieldList|merge({ (groupName): [] }) %}
+                    {% set propertyGroupCustomFieldList = propertyGroupCustomFieldList|merge({ (groupName): propertyGroupCustomFieldList[groupName]|merge({ propertyNum: group.customFields.custom_property_additionals_num }) }) %}
+                    {% set propertyGroupCustomFieldList = propertyGroupCustomFieldList|merge({ (groupName): propertyGroupCustomFieldList[groupName]|merge({ propertyImg: group.customFields.custom_property_additionals_img }) }) %}
+
+                    <div class="property-container" {% if propertyGroupCustomFieldList[propertyGroupName].propertyNum %}style="order: {{propertyGroupCustomFieldList[propertyGroupName].propertyNum}};"{% else %}style="order: 99999;"{% endif %}>
+                      <div class="property-icon">
+                        {% if propertyGroupCustomFieldList[propertyGroupName].propertyImg %}
+                          {% set dateiZumAusgeben1 = propertyGroupCustomFieldList[propertyGroupName].propertyImg %}
+                          {% set media = searchMedia([dateiZumAusgeben1], context.context) %}
+                          {% set downloadurl1 = media.get(dateiZumAusgeben1) %}
+                          <img src="{{ downloadurl1.url }}" title="{{ group.translated.name|e }}" />
+                        {% else %}
+                          <span title="{{ group.translated.name|e }}">{% sw_icon 'info' %}</span>
+                        {% endif %}
+                      </div>
+                      <div class="property-text">
+                        {% for option in group.options %}
+                          {% set i = (i|default(0)) + 1 %}
+                          {% if i > 1 %}, {% endif %}{{ option.translated.name|e }}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      {{ parent() }}
+    </div>
+  </div>
+{% endblock %}

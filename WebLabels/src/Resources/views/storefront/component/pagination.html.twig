@@ -1,0 +1,6 @@
+{% sw_extends '@Storefront/storefront/component/pagination.html.twig' %}
+
+{% block component_pagination_last %}
+  {{ parent() }}
+  <li class="page-item von-link">{{ 'detail.reviewAvgRate'|trans }} {{ totalPages }}</li>
+{% endblock %}

@@ -1,0 +1,67 @@
+.container, .cms-section .boxed {
+   max-width: 1460px;
+}
+html {
+   scroll-behavior: smooth;
+}
+.btn {
+   border-radius: 50px;
+   transition: 300ms;
+   &.btn-primary {
+      background: none;
+      color: $sw-color-brand-primary;
+      padding-left: 20px;
+      padding-right: 20px;
+      &:hover {
+         color: #fff;
+         background: $sw-color-brand-primary;
+         border-color: $sw-color-brand-primary;
+      }
+   }
+   &.btn-secondary {
+      background: none;
+      color: $sw-color-brand-secondary;
+      padding-left: 20px;
+      padding-right: 20px;
+      &:hover {
+         color: #fff;
+         background: $sw-color-brand-secondary;
+         border-color: $sw-color-brand-secondary;
+      }
+   }
+}
+.checkout-aside-newsletter-signup {
+   padding: 1rem;
+   background-color: #f9f9f9;
+}
+.scroll-up-button  {
+   .btn.btn-primary {
+      padding: 0;
+      height: 50px;
+      width: 50px;
+   }
+}
+.scroll-up-button {
+   &:hover {
+      svg {
+         color: #fff;
+      }
+   }
+   svg {
+      color: $sw-color-brand-primary;
+   }
+}
+
+.form-check .form-check-input {
+   border: 1px solid $sw-color-brand-primary;
+}
+#confirmFormSubmit {
+   background: $sw-color-brand-secondary;
+   color: $sw-color-brand-primary;
+   border: 1px solid $sw-color-brand-secondary;
+   &:hover {
+      color: #fff;
+      background: $sw-color-brand-primary;
+      border: 1px solid $sw-color-brand-primary;
+   }
+}

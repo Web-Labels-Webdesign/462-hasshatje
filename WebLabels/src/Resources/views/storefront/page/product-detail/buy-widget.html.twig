@@ -1,0 +1,45 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_buy_inner %}
+  {{ parent() }}
+  <div class="detail-blue-box">
+    <div class="text-container">
+      <p class="h4">{{ 'wlcustom.detail.persoenlich'|trans }}</p>
+      <p>{{ 'wlcustom.detail.persoenlichtext'|trans }}</p>
+      <p class="link">{{ 'wlcustom.phone'|trans|raw }}</p>
+      <p class="link">{{ 'wlcustom.mail'|trans|raw }}</p>
+    </div>
+  </div>
+{% endblock %}
+
+{% block page_product_detail_delivery_informations %}
+
+{% endblock %}
+
+{% block page_product_detail_buy_form %}
+  {{ parent() }}
+  <div class="product-detail-delivery-information">
+    {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
+  </div>
+{% endblock %}
+
+{% block page_product_detail_ordernumber_container %}
+  <div class="details-action">
+    {% set showIconOnly = false %}
+    {% set addToCompareOptions = { productId: page.product.id, showIconOnly: showIconOnly, defaultText: 'froshProductCompare.general.addToCompare'|trans|sw_sanitize, addedText: 'froshProductCompare.general.removeFromCompare'|trans|sw_sanitize } %}
+    <div class="detail-compare">
+      {% sw_icon 'arrow-switch' %} <button data-add-to-compare-button="true" data-add-to-compare-button-options="{{ addToCompareOptions|json_encode }}" class="btn btn-block btn-compare" title="{{ 'froshProductCompare.general.addToCompare'|trans|striptags }}">{{ 'froshProductCompare.general.addToCompare'|trans|sw_sanitize }}</button>
+    </div>
+    {% if config('core.cart.wishlistEnabled') %}
+      {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with { showText: true, size: 'md', productId: page.product.id } %}
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block page_product_detail_add_to_compare_button %}
+
+{% endblock %}
+
+{% block page_product_detail_wishlist %}
+
+{% endblock %}

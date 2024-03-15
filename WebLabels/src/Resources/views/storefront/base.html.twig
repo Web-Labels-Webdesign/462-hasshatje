@@ -1,0 +1,89 @@
+{% sw_extends '@Strorefront/storefront/base.html.twig' %}
+
+{% block base_header_inner %}
+  <div class="custom-top-bar">
+    <div class="container">
+      <div class="custom-topbar-content">
+        <div class="topbar-trusted">
+          <img src="/media/ce/cd/7e/1689086706/Product_Return.png" /> {{ 'wlcustom.topbar.trust1'|trans }}
+        </div>
+        <div class="topbar-trusted">
+          <img src="/media/0c/6f/a2/1689086706/Gruppe 2255.png" /> {{ 'wlcustom.topbar.trust2'|trans }}
+        </div>
+        <div class="topbar-trusted">
+          <img src="/media/1d/3b/3c/1689253467/Gruppe 896.png" /> {{ 'wlcustom.topbar.trust3'|trans }}
+        </div>
+        <div class="topbar-trusted">
+          <img src="/media/74/86/f4/1689765139/Gruppe 12.png" /> {{ 'wlcustom.phone'|trans|sw_sanitize }}
+        </div>
+        <div class="topbar-trusted">
+          <img src="/media/5c/b8/cc/1689765139/Gruppe 15.png" /> {{ 'wlcustom.mail'|trans|sw_sanitize }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ parent() }}
+{% endblock %}
+
+{% block base_footer %}
+  <div class="upper-footer">
+    <div class="container">
+      <div align="center" class="footer-head">
+        <p class="h1">{{ 'wlcustom.footer.head'|trans }}</p>
+        <p>{{ 'wlcustom.footer.text'|trans }}</p>
+      </div>
+      <div class="footer-trusteds">
+        <div class="footer-trusted">
+          <img src="/media/ee/16/a4/1689241228/abholung-footer.jpg" />
+          <p class="blue">{{ 'wlcustom.footer.head.trust1'|trans|raw }}</p>
+          <p>{{ 'wlcustom.footer.text.trust1'|trans|raw }}</p>
+
+          <p class="yellow">
+            <a data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">{{ 'wlcustom.footer.link.trust1'|trans|raw }}</a>
+          </p>
+          <div class="collapse" id="collapseExample3">
+            <div class="card card-body" align="center">{{ 'wlcustom.abholzeiten'|trans|raw }}</div>
+          </div>
+        </div>
+        <div class="footer-trusted">
+          <img src="/media/aa/82/ec/1689241228/rueckgaberecht-footer.jpg" />
+          <p class="blue">{{ 'wlcustom.footer.head.trust2'|trans|raw }}</p>
+          <p>{{ 'wlcustom.footer.text.trust2'|trans|raw }}</p>
+          <p class="yellow">{{ 'wlcustom.footer.link.trust2'|trans|raw }}</p>
+        </div>
+        <div class="footer-trusted">
+          <img src="/media/60/92/af/1689241228/versandabwicklung-footer.jpg" />
+          <p class="blue">{{ 'wlcustom.footer.head.trust3'|trans|raw }}</p>
+          <p>{{ 'wlcustom.footer.text.trust3'|trans|raw }}</p>
+          <p class="yellow">{{ 'wlcustom.footer.link.trust3'|trans|raw }}</p>
+        </div>
+        <div class="footer-trusted">
+          <img src="/media/02/29/4e/1689241228/zahlung-footer.jpg" />
+          <p class="blue">{{ 'wlcustom.footer.head.trust4'|trans|raw }}</p>
+          <p>{{ 'wlcustom.footer.text.trust4'|trans|raw }}</p>
+          <p class="yellow">
+            <a data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">{{ 'wlcustom.footer.link.trust4'|trans|raw }}</a>
+          </p>
+          <div class="collapse" id="collapseExample4">
+            <div class="card card-body" align="center">{{ 'wlcustom.detail.bezahlmoeglichkeiten'|trans|raw }}</div>
+          </div>
+        </div>
+        <div class="footer-trusted">
+          <img src="/media/a7/40/bd/1689241228/trustedshop-footer.jpg" />
+          <p class="blue">{{ 'wlcustom.footer.head.trust5'|trans|raw }}</p>
+          <p>{{ 'wlcustom.footer.text.trust5'|trans|raw }}</p>
+          <p class="yellow">
+            <a data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample4">{{ 'wlcustom.footer.link.trust5'|trans|raw }}</a>
+          </p>
+          <div class="collapse" id="collapseExample5">
+            <div class="footer-column-content-inner trusteds">
+              <img src="/media/4b/53/ef/1689082428/Gruppe -28.png" />
+              <img src="/media/bb/fe/98/1689082428/Gruppe -27.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ parent() }}
+{% endblock %}

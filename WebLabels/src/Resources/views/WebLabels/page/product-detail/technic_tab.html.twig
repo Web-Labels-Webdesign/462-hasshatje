@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{% block utilities_offcanvas_content %}
+  <div class="product-detail-description tab-pane-container">
+    <div class="h3 product-detail-description-title">{{ 'wlcustom.eigenschaften'|trans }}</div>
+    <div class="product-detail-description-text tab_eigenschaften" itemprop="technic">
+      <div class="detail-table-container">
+        {% sw_include '@Storefront/storefront/page/product-detail/properties.html.twig' %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

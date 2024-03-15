@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}
+
+{% block layout_header_actions_language_widget %}
+  {{ parent() }}
+  {% set isoCode = page.header.activeLanguage.translationCode.code|lower|split('-') %}
+  {% set country = isoCode[0] %}
+  <div class="header-actions">{{ country|upper }}</div>
+{% endblock %}

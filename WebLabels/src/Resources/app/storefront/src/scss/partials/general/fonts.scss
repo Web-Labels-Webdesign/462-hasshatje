@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url('../assets/webFonts/HelveticaNeue/HelveticaNeue-Medium.woff2') format('woff2'), url('webFonts/HelveticaNeue/HelveticaNeueMedium.ttf') format('ttf');
+  font-weight: 400;
+}
+
+/*
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url('../assets/webFonts/HelveticaNeue/HelveticaNeueBold.woff2') format('woff2'), url('webFonts/HelveticaNeue/HelveticaNeueBold.ttf') format('ttf');
+  font-weight: 700;
+}
+*/
+.h1, h1 {
+  color: $sw-color-brand-primary;
+  font-weight: 700;
+  &.yellow {
+    color: $sw-color-brand-secondary;
+  }
+}
+.h2, h2 {
+  color: $sw-color-brand-primary;
+  &.yellow {
+    color: $sw-color-brand-secondary;
+  }
+}
+.h3, h3 {
+  font-weight: 400;
+  &.yellow {
+    color: $sw-color-brand-secondary;
+  }
+}
+.h4, h4 {
+  font-weight: 400;
+  &.yellow {
+    color: $sw-color-brand-secondary;
+  }
+}
+.h5, h5 {
+  font-weight: 700;
+  &.yellow {
+    color: $sw-color-brand-secondary;
+  }
+}
+.h6, h6 {
+  font-weight: 700;
+  &.yellow {
+    color: $sw-color-brand-secondary;
+  }
+}
+p {
+  &.white {
+    color: #fff;
+  }
+}
+@media screen and (min-width: 992px) {
+  p {
+    font-size: 16px;
+  }
+  
+}

@@ -1,0 +1,6 @@
+{% sw_extends '@Storefront/storefront/component/address/address-personal-vat-id.html.twig' %}
+
+{% block component_address_form_company_vatId_label %}
+    {{ parent() }}
+    <small class="vat-optional">{{ 'wlcustom.optional'|trans }}</small>
+{% endblock %}

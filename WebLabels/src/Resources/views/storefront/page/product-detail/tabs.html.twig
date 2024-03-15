@@ -1,0 +1,72 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+
+{% block page_product_detail_tabs_inner %}
+  <div class="row">
+    <div class="col-lg-9 custom-tabs-container">{{ parent() }}</div>
+    <div class="col-lg-3 custom-tabs-container-right">
+      <div class="text-container">
+        <p class="h2">{{ 'wlcustom.detail.alternativkontakt'|trans }}</p>
+        <div class="detail-dropdown questions">
+          <p class="request-price">
+            <a data-ajax-modal="true" href="/widgets/cms/5eb82eae829b421fb0383aa5153aaef4" data-url="/widgets/cms/5eb82eae829b421fb0383aa5153aaef4" class="btn-block btn btn-secondary" id="requestPrice">{{ 'wlcustom.detail.fragenzumartikel'|trans }}</a>
+          </p>
+        </div>
+
+        <div class="detail-dropdown abholung">
+          <p>
+            <a data-ajax-modal="true" href="/widgets/cms/b2da42fd4a3244c59a1eb40f1f070849" data-url="/widgets/cms/b2da42fd4a3244c59a1eb40f1f070849" class="btn btn-secondary btn-block" >{{ 'wlcustom.topbar.trust3'|trans }}</a>
+          </p>
+          {#
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body" align="center">{{ 'wlcustom.abholzeiten'|trans|raw }}</div>
+          </div>
+          #}
+        </div>
+
+        <div class="detail-dropdown payments">
+          <p>
+            <a class="btn btn-secondary btn-block" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">{{ 'wlcustom.detail.bezahlinformationen'|trans }}</a>
+          </p>
+          <div class="collapse" id="collapseExample2">
+            <div class="card card-body" align="center">{{ 'wlcustom.detail.bezahlmoeglichkeiten'|trans|raw }}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block page_product_detail_tabs_navigation_description %}
+  {{ parent() }}
+  {% if (page.product.sortedProperties|length) > 0 %}
+    <li class="nav-item">
+      <a class="nav-link product-detail-tab-navigation-link" id="technic-tab" data-toggle="tab" data-offcanvas-tabs="true" href="#technic-tab-pane" role="tab" aria-controls="technic-tab-pane" aria-selected="false">
+        <span>{{ 'wlcustom.eigenschaften'|trans }}</span>
+        <span class="product-detail-tab-navigation-icon">{% sw_icon 'arrow-medium-right' style { pack: 'solid' } %}</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if (page.product.customFields.custom_product_data_sheet_text and page.product.customFields.custom_product_data_sheet) or (page.product.customFields.custom_product_data_sheet_text2 and page.product.customFields.custom_product_data_sheet2) or (page.product.customFields.custom_product_data_sheet_text3 and page.product.customFields.custom_product_data_sheet3) or (page.product.customFields.custom_product_data_sheet_text4 and page.product.customFields.custom_product_data_sheet4)  %}
+    <li class="nav-item">
+      <a class="nav-link product-detail-tab-navigation-link" id="technic-tab1" data-toggle="tab" data-offcanvas-tabs="true" href="#technic-tab-pane1" role="tab" aria-controls="technic-tab-pane1" aria-selected="false">
+        <span>{{ 'wlcustom.detail.datenblatt'|trans }}</span>
+        <span class="product-detail-tab-navigation-icon">{% sw_icon 'arrow-medium-right' style { pack: 'solid' } %}</span>
+      </a>
+    </li>
+  {% endif %}
+{% endblock %}
+
+{% block page_product_detail_tabs_content_description %}
+  {{ parent() }}
+  {% if (page.product.sortedProperties|length) > 0 %}
+    <div class="tab-pane fade show" id="technic-tab-pane" role="tabpanel" aria-labelledby="technic-tab">
+      {% sw_include '@WebLabels/WebLabels/page/product-detail/technic_tab.html.twig' %}
+    </div>
+  {% endif %}
+  {% if page.product.customFields.custom_product_data_sheet %}
+    <div class="tab-pane fade show" id="technic-tab-pane1" role="tabpanel" aria-labelledby="technic-tab1">
+      {% sw_include '@WebLabels/WebLabels/page/product-detail/datasheet_tab.html.twig' %}
+    </div>
+  {% endif %}
+{% endblock %}

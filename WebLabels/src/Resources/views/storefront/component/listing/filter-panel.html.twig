@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel %}
+  {% if listing.total > 0 %}
+    <div class="listing-filter-head d-lg-block d-none">
+      <p>
+        <img src="/media/d3/ab/ca/1689233683/einstellung.png" />Filter
+      </p>
+    </div>
+  {% endif %}
+  {{ parent() }}
+{% endblock %}

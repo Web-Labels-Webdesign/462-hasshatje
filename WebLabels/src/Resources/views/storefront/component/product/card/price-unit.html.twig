@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+
+{% block component_product_box_price_unit %}
+{% endblock %}
+
+{% block component_product_box_price %}
+    <div class="box-variant-inhalt">
+        {% if product.childCount > 0 %}
+            {{ product.childCount }} {{ 'wlcustom.varianten'|trans }}
+        {% elseif referencePrice is not null %}
+            {{ 'wlcustom.inhalt'|trans }} {{ referencePrice.purchaseUnit }} {{ referencePrice.unitName }}
+        {% endif %}
+    </div>
+    <div class="product-price-wrapper">
+        {% set price = real %}
+
+        {% if displayFrom %}
+            {{ "listing.listingTextFrom"|trans|sw_sanitize }}
+        {% endif %}
+
+        {% set isListPrice = price.listPrice.percentage > 0 %}
+
+        <span class="product-price{% if isListPrice and not displayFrom %} with-list-price{% endif %}">
+            {{ price.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+            {% if isListPrice and not displayFrom %}
+                <span class="list-price{% if hideStrikeTrough %} list-price-no-line-through{% endif %}">
+                    <span class="list-price-price">{{ price.listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+                </span>
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock %}

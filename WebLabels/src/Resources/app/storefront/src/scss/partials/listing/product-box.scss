@@ -1,0 +1,125 @@
+.product-box {
+    transition: 300ms;
+    .product-image {
+        transition: 500ms;
+    }
+    .product-name {
+        transition: 300ms;
+    }
+    &:hover {
+        border-color: #fff;
+        .product-image {
+            transform: scale(1.1);
+        }
+        .product-name {
+            color: $sw-color-brand-primary;
+        }
+    }
+    .product-description {
+        margin: 0;
+    }
+    .basic-manufacturer--logo-top-left {
+        top: 10px;
+        left: 10px;
+        z-index: 1;
+    }
+    img.manufacturer--logo-img {
+        
+        max-height: 20px;
+        max-width: 100px;
+    }
+    .box-manufacturer-img {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1;
+        max-height: 20px;
+        max-width: 100px;
+    }
+    
+    .box-variant-inhalt {
+        color: #B7B7B7;
+        height: 21px;
+    }
+    .product-price {
+        &.with-list-price {
+            color: #333;
+        }
+        .list-price {
+            color: #B7B7B7;
+        }
+    }
+    .box-manufacturer-name {
+        color: $sw-color-brand-primary;
+    }
+    
+    .custom-box-actions {
+        display: flex;
+        justify-content: end;
+        .compare-button {
+            margin: 0;
+            button {
+                width: auto;
+                background: none;
+                border: none;
+                color: $sw-text-color;
+                transition: 300ms;
+                &.is-added-to-compare {
+                    color: $sw-color-brand-primary;
+                }
+                &:hover {
+                    background-color: #dbdbdb;
+                }
+                .icon > svg  {
+                    top: 2px;
+                }
+            }
+        }
+        .product-wishlist {
+            margin: 0;
+            button {
+                position: relative;
+                background: none;
+                bottom: 0;
+                right: 0;
+                transition: 300ms;
+                border-radius: 3px;
+                &:hover {
+                    background-color: #dbdbdb;
+                }
+                &::before {
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                }
+                .icon-wishlist {
+                    color: $sw-text-color;
+                    &.icon-wishlist-added {
+                        color: $sw-color-brand-primary;
+                    }
+                }
+            }
+        }
+    }
+}
+.product-badges {
+    right: 0;
+    left: unset;
+    text-align: right;
+    font-weight: 400;
+    .badge {
+        border-radius: 5px 0 0 5px;
+        &.badge-success {
+            background: $sw-color-brand-secondary;
+        }
+        &.badge-discount {
+            background: $sw-color-success;
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    .product-image-wrapper {
+        height: 120px;
+    }
+}
