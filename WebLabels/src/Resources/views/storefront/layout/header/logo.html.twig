@@ -1,0 +1,25 @@
+{% sw_extends '@Storefront/storefront/layout/header/logo.html.twig' %}
+
+{% block layout_header_logo_inner %}
+     <div class="row align-items-center">
+        <div class="col-sm-auto d-block d-sm-none d-lg-block ">
+                <div class="nav-main-toggle">
+                    <button
+                        class="btn nav-main-toggle-btn header-actions-btn"
+                        type="button"
+                        {% if feature('v6.6.0.0') %}
+                            data-off-canvas-menu="true"
+                        {% else %}
+                            data-offcanvas-menu="true"
+                        {% endif %}
+                        aria-label="{{ "general.menuLink"|trans|striptags }}"
+                    >
+                        {% sw_icon 'stack' %}
+                    </button>
+                </div>
+        </div>
+        <div class="col">
+            {{ parent() }}
+        </div>
+    </div>
+{% endblock %}

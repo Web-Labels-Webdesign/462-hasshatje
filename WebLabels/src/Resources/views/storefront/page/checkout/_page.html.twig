@@ -1,0 +1,37 @@
+{% sw_extends '@Storefront/storefront/page/checkout/_page.html.twig' %}
+
+{% block base_content %}
+  <div class="checkout-steps">
+    <div class="checkout-step active">
+      <div class="img">
+        {% sw_icon 'cart' %}
+      </div>
+      <div class="text">Warenkorb</div>
+    </div>
+    <div class="checkout-step arrow">
+      <div class="img">
+        {% sw_icon 'arrow-right' %}
+      </div>
+      <div class="text"></div>
+    </div>
+    <div class="checkout-step{% if controllerAction == 'checkoutRegisterPage' or controllerAction == 'confirmPage' %} active{% endif %}">
+      <div class="img">
+        {% sw_icon 'avatar' %}
+      </div>
+      <div class="text">Login</div>
+    </div>
+    <div class="checkout-step arrow">
+      <div class="img">
+        {% sw_icon 'arrow-right' %}
+      </div>
+      <div class="text"></div>
+    </div>
+    <div class="checkout-step{% if controllerAction == 'confirmPage' %} active{% endif %}">
+      <div class="img">
+        {% sw_icon 'rocket' %}
+      </div>
+      <div class="text">Bestellabschluss</div>
+    </div>
+  </div>
+  {{ parent() }}
+{% endblock %}
