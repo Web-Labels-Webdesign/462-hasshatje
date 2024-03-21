@@ -144,8 +144,11 @@
         height: 100%;
         padding: 40px;
         background: rgba(0, 107, 179, .8);
-        justify-content: center;
+        justify-content: start;
         position: relative;
+        width: 100%;
+        margin: 0;
+        max-width: 710px;
     }
     .cms-element-elysium-slide__cta-button.fluid-text-button {
         padding: 2px 20px;

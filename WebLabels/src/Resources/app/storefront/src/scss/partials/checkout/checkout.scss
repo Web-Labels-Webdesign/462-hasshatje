@@ -1,0 +1,36 @@
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    .checkout-step {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        &.active {
+            .img {
+                background: $sw-color-success;
+                border: none;
+                svg {
+                    color: #fff;
+                }
+            }
+        }
+        .img {
+            border-radius: 100%;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #f9f9f9;
+            svg {
+                top: 0;
+            }
+        }
+        .text {
+            width: 100%;
+        }
+    }
+}
